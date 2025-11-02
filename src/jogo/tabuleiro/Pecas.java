@@ -1,35 +1,61 @@
 package jogo.tabuleiro;
 
 import java.util.Arrays;
-import java.util.Locale;
 
 public class Pecas {
+    public Peca[] peca;
     public boolean cor;
-    public String[] tipo;
     public String[] pecas = {"P", "T", "C", "B", "D", "R"};
 
+
+    public String getPecaTipo(int i) {
+        return this.peca[i].tipo;
+    }
+
     public Pecas(boolean cor) {
+        this.peca = new Peca[16];
         this.cor = cor;
-        tipo = new String[16];
-        int c = 0;
-        for (String p : pecas){
-            if(!this.cor){
-                Arrays.setAll(pecas,i -> pecas[i].toLowerCase());
+        if(!this.cor){
+            Arrays.setAll(pecas,i -> this.pecas[i].toLowerCase());
+            for (int i = 0; i < 16; i++) {
+                if(i<8){
+                    this.peca[i] = new Peca(1, i);
+                }
+                else {
+                    this.peca[i] = new Peca(0, i);
+                }
+
             }
+        }
+        else{
+            for (int i = 0; i < 16; i++) {
+                if(i<8){
+                    this.peca[i] = new Peca(6, i);
+                }
+                else {
+                    this.peca[i] = new Peca(7, i);
+                }
+            }
+        }
+        int c = 0;
+
+        for (String p : pecas){
 
             if(p.equalsIgnoreCase("p")){
                 for (int i = 0; i<8; i++){
-                    tipo[i] = p;
+                    this.peca[i].tipo = p;
+
                 }
             }
             else {
-                tipo[c+8] = p;
+                this.peca[c+8].tipo = p;
                 if(c < 4){
-                    tipo[15-c] = p;
+                    this.peca[15-c].tipo = p;
                 }
                 c++;
             }
 
         }
+
     }
 }
