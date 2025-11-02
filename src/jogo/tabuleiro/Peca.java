@@ -6,7 +6,15 @@ public class Peca {
     private int linha;
     private int coluna;
     public String tipo;
-    ArrayList<String> alternativas = new ArrayList();
+    ArrayList<Integer[]> alternativas = new ArrayList();
+
+    // Cada peca do tabuleiro tera um linha e colunas associada a ela, seu tipo e alternativas de movimentação
+
+    public String getTipo() {
+        return this.tipo;
+    }
+
+
 
     public Peca(int linha, int coluna) {
         this.linha = linha;
@@ -29,9 +37,6 @@ public class Peca {
         this.linha = linha;
     }
 
-    public ArrayList<String> getAlternativas() {
-        return alternativas;
-    }
 
     public void setAlternativas(ArrayList<String> alternativas, String pos) {
         alternativas.add(pos);
@@ -39,4 +44,6 @@ public class Peca {
     public void remAlternativas(ArrayList<String> alternativas, String pos) {
         alternativas.remove(pos);
     }
+
+    // Setters e Getters
 }

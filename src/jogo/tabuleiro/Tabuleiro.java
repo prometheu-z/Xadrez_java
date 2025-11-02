@@ -1,16 +1,19 @@
 package jogo.tabuleiro;
 
 import java.util.Arrays;
-import java.util.HashMap;
 
 public class Tabuleiro {
     protected int tamanho = 8;
-    protected String[] linhas = {"A","B","C","D","E","F","G","H"};
+    protected String[] colunas = {"A","B","C","D","E","F","G","H"};
     private final String[][] tabuleiro;
+
+    // Cada tabuleiro terá um tamanho pre definido e suas colunas, e a instancia de sua matriz
+
 
 
     Pecas b = new Pecas(true);
     Pecas p = new Pecas(false);
+    // É tambem criado peças  brancas e pretas
 
 
 
@@ -20,12 +23,14 @@ public class Tabuleiro {
             Arrays.fill(linha, " ");
         }
         for (int i = 0; i< 8; i++){
-            tabuleiro[6][i] = b.getPecaTipo(i);
-            tabuleiro[7][i] = b.getPecaTipo(i+8);
+            tabuleiro[6][i] = b.getPecaTipo(6,i);
+            tabuleiro[7][i] = b.getPecaTipo(7,i);
 
-            tabuleiro[1][i] = p.getPecaTipo(i);
-            tabuleiro[0][i] = p.getPecaTipo(i+8);
+            tabuleiro[1][i] = p.getPecaTipo(1,i);
+            tabuleiro[0][i] = p.getPecaTipo(0,i);
         }
+
+        // O construtor gera a matriz na memória e o preenche com espaços vazios e adiciona nos respectivos locais suas peças
 
     }
 
@@ -48,18 +53,8 @@ public class Tabuleiro {
 
     }
 
-    public void moverPeca(String pecaPos){
-        pecaPos = pecaPos.substring(1);
-        int c = 0;
-        for (String n : linhas){
-            if( pecaPos.substring(0,1).toUpperCase().equals(n)){
-                c++;
-            }
-        }
+    // Funçao para exibirr o tabuleiro
 
-
-
-    }
 
 
 
