@@ -12,7 +12,6 @@ public class Tabuleiro {
     public Tabuleiro() {
         tabuleiro = new String[getTamanho()][getTamanho()];
         for (String[] linha : tabuleiro) {
-            // Agora sim, preencha a linha (que é um vetor 1D) com " "
             Arrays.fill(linha, " ");
         }
         for (int i = 0; i< 8; i++){
