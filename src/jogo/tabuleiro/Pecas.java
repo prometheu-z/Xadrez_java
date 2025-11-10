@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Pecas {
     public Peca[] peca;
     public boolean cor;
-    public String[] pecas = {"P", "T", "C", "B", "D", "R"};
+    public String[] tipos = {"P", "T", "C", "B", "D", "R"};
 
     // Cada conjunto de Peças (preto ou branco) terá 16 peças distintas uma cor e o tipo de cada peca no conjunto
 
@@ -18,6 +18,22 @@ public class Pecas {
         }
         return " ";
     }
+    public Peca getPeca(int i, int j) {
+        for (Peca p : this.peca){
+            if(p.getLinha() == i && p.getColuna() == j){
+                return p;
+            }
+        }
+        return null;
+    }
+    public boolean getHaPeca(int i, int j) {
+        for (Peca p : this.peca){
+            if(p.getLinha() == i && p.getColuna() == j){
+                return true;
+            }
+        }
+        return false;
+    }
 
     // Função pra retornar o tipo de uma peça no conjunto
 
@@ -25,7 +41,7 @@ public class Pecas {
         this.peca = new Peca[16];
         this.cor = cor;
         if(!this.cor){
-            Arrays.setAll(pecas,i -> this.pecas[i].toLowerCase());
+            Arrays.setAll(tipos,i -> this.tipos[i].toLowerCase());
             for (int i = 0; i < 16; i++) {
                 if(i<8){
                     this.peca[i] = new Peca(1, i);
@@ -33,6 +49,7 @@ public class Pecas {
                 else {
                     this.peca[i] = new Peca(0, i-8);
                 }
+                this.peca[i].pecas = this;
             }
         }
         else{
@@ -43,18 +60,18 @@ public class Pecas {
                 else {
                     this.peca[i] = new Peca(7, i-8);
                 }
+                this.peca[i].pecas = this;
             }
         }
         int c = 0;
 
         // É instanciado um vetor de 16 peças na memoria, e cada uma é instanciada com uma posição
 
-        for (String p : pecas){
+        for (String p : tipos){
 
             if(p.equalsIgnoreCase("p")){
                 for (int i = 0; i<8; i++){
                     this.peca[i].tipo = p;
-                    this.peca[i].setAlternativas();
 
                 }
             }
@@ -67,6 +84,13 @@ public class Pecas {
             }
             // É colocado noo vetor as peças em suas respectivas posições 0-7 peoes, seguido de T, C, B, D, R, B, C, T
         }
+    }
+
+    void possivelMoviment(Peca p){
+
+
+
+
     }
 
     // definir movimentação:
